@@ -37,12 +37,12 @@ class StorageCreate(MeasurementCreate):
     
 class DataPoint(BaseModel):
     id: int
-    timestamp: datetime = Field(alias="created_at")
+    created_at: datetime
     temperature: float
     humidity: float
     pm25: float
-    air_quality: Optional[str] = None
-    note: Optional[str] = None
+    air_quality: str
+    note: str
     
     class Config:
         from_attributes = True

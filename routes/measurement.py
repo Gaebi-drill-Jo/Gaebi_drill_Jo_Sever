@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 @router.post("/measurement", response_model=schemas.DataPoint, status_code=status.HTTP_201_CREATED)
-def record_measurement(data: schemas.MeasurementCreate, db: Session = Depends(get_db)):
+def record_measurement(data: schemas.MeasurementCreate, db: Session = Depends(get_db),  current_user: models.User = Depends(get_current_user)):
     
     air_quality = "good" if data.pm25 < 15 else ("normal" if data.pm25 < 50 else "bad")
     
@@ -20,7 +20,7 @@ def record_measurement(data: schemas.MeasurementCreate, db: Session = Depends(ge
         humidity=data.humidity,
         pm25=data.pm25,
         air_quality=air_quality,
-        user_id=1 
+        user_id=current_user.User_ID
     )
     
     db.add(new_data)

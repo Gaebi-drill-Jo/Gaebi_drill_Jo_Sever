@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.security import HTTPBearer
 from routes import user, measurement, graph 
- 
 from database import engine, Base 
 
 app = FastAPI()

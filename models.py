@@ -2,8 +2,8 @@ from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
+from database import Base
 
-Base = declarative_base()
 
 class User(Base):
     __tablename__ = "User" 
@@ -26,7 +26,7 @@ class Data(Base):
     pm25 = Column(Float)
     air_quality = Column(String(20))
     note = Column(String(255))
-    create_at = Column(DateTime, default=func.now())
+    created_at = Column(DateTime, default=func.now())
     
     user_id = Column(Integer, ForeignKey("User.User_ID"))
     owner = relationship("User", back_populates="data_points")

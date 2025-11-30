@@ -20,10 +20,10 @@ def get_data_for_graph(
     query = db.query(models.Data)
     
     if start_date:
-        query = query.filter(models.Data.create_at >= start_date)
+        query = query.filter(models.Data.created_at >= start_date)
     if end_date:
-        query = query.filter(models.Data.create_at <= end_date)
+        query = query.filter(models.Data.created_at <= end_date)
         
-    data_list = query.order_by(models.Data.create_at.desc()).limit(100).all()
+    data_list = query.order_by(models.Data.created_at.desc()).limit(100).all()
 
     return {"points": data_list}
