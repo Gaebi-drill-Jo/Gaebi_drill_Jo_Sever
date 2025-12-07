@@ -10,3 +10,4 @@ gunicorn
 uvicorn
 email-validator
 pydantic[email]
+paho-mqtt
