@@ -6,3 +6,5 @@ pydantic
 passlib
 python-jose[cryptography]
 PyJWT
+gunicorn
+uvicorn
